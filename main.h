@@ -18,4 +18,10 @@ int print_percent(va_list args);
 
 int (*get_func(char x))(va_list args);
 
+typedef struct specifier
+{
+	char *valid;
+	int (*f)(va_list);
+}spec;
+
 #endif
