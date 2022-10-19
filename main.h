@@ -36,5 +36,8 @@ int stringhexa(va_list va);
 int pointer(va_list va);
 int hexa_pointer(unsigned long int c);
 int _printf(const char *format, ...);
+int (*get_print(char s))(va_list, flags_t *);
+int get_flag(char s, flags_t *f);
+
 
 #endif
