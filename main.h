@@ -1,51 +1,71 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H
+#define _MAIN_H
+
+#define SIZE 2048
+
+
+
 #include <stdlib.h>
+
 #include <stdarg.h>
 
-/**
- * struct flags - struct
- * @plus: param
- * @space: param
- * @hash: param
- */
-typedef struct flags
-{
-	int plus;
-	int space;
-	int hash;
-} flags_t;
+#include <unistd.h>
 
-/**
- * struct printHandler - struct
- * @c: param
- * @f: param
- */
-typedef struct printHandler
-{
-	char c;
-	int (*f)(va_list ap, flags_t *f);
-} ph;
+#include <stdio.h>
 
-int print_int(va_list l, flags_t *f);
-void print_number(int n);
-int print_unsigned(va_list l, flags_t *f);
-int count_digit(int i);
-int print_hex(va_list l, flags_t *f);
-int print_hex_big(va_list l, flags_t *f);
-int print_binary(va_list l, flags_t *f);
-int print_octal(va_list l, flags_t *f);
-char *convert(unsigned long int num, int base, int lowercase);
+#include <string.h>
+
+#include <limits.h>
+
+
+
 int _printf(const char *format, ...);
-int (*get_print(char s))(va_list, flags_t *);
-int get_flag(char s, flags_t *f);
-int print_string(va_list l, flags_t *f);
-int print_char(va_list l, flags_t *f);
-int _putchar(char c);
-int _puts(char *str);
-int print_rot13(va_list l, flags_t *f);
-int print_rev(va_list l, flags_t *f);
-int print_bigS(va_list l, flags_t *f);
-int print_address(va_list l, flags_t *f);
-int print_percent(va_list l, flags_t *f);
+
+int (*format_type(char *s))(va_list vlist, char *output_p, int o_p);
+
+int print_percent(va_list vlist, char *output_p, int o_p);
+
+int print_char(va_list vlist, char *output_p, int o_p);
+
+int s_trlen(char *str);
+
+int print_string(va_list vlist, char *output_p, int o_p);
+
+int print_numbers(int n, char *output_p, int o_p);
+
+int print_int(va_list vlist, char *output_p, int o_p);
+
+int print_single_int(va_list vlist, char *output_p, int o_p);
+
+int print_octal(va_list vlist, char *output_p, int o_p);
+
+int print_unumber(va_list vlist, char *output_p, int o_p);
+
+int print_hexa(va_list vlist, char *output_p, int o_p);
+
+int print_HEXA(va_list vlist, char *output_o, int o_p);
+
+int print_HEXA_S(char s, char *output_p, int o_p);
+
+int print_S_string(va_list vlist, char *output_p, int o_p);
+
+int print_paddress(va_list vlist, char *output_p, int o_p);
+
+int print_rot13(va_list vlist, char *output_p, int o_p);
+
+/**
+ * struct t_format - Struct t_format
+ *
+ * @character: the class
+ *
+ * @func: pointer to a function
+ * Description: the structure for the format type
+ */
+typedef struct t_format
+{
+	char *character;
+	int (*func)(va_list vlist, char *output_p, int o_p);
+}
+t_f;
+
 #endif
