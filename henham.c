@@ -1,6 +1,6 @@
+#include "holberton.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include "main.h"
 /**
  * print_c - prints character
  * @args: character argument
